@@ -17,6 +17,16 @@
           # packages needed at runtime for running software in this repo
           packages = with pkgs; [];
         };
+        devShells.godev = pkgs.mkShell {
+          # packages needed for building the software in this repo
+          nativeBuildInputs = with pkgs; [
+            go
+          ];
+          # packages needed at runtime for running software in this repo
+          packages = with pkgs; [
+            gopls
+          ];
+        };
       };
     };
 }
