@@ -13,6 +13,7 @@ Using:
 - `default`: empty
 - `godev`: [Go](https://go.dev/) language dev; includes Go itself and language
   server (`gopls`)
+- `temporaldev`: [Temporal](https://temporal.io/) + Go development
 
 ## usage
 
