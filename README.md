@@ -13,6 +13,8 @@ Using:
 - `default`: empty
 - `godev`: [Go](https://go.dev/) language dev; includes Go itself and language
   server (`gopls`)
+- `k8s`: [Kubernetes](https://kubernetes.io/) tools for cluster administration
+  and app/service manifest development
 - `temporaldev`: [Temporal](https://temporal.io/) + Go development
 
 ## usage
