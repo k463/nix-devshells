@@ -54,6 +54,7 @@
             kubesec
             kubespy
             kubetui
+            kubie
             kustomize
             kuttl
             popeye
