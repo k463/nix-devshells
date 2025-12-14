@@ -39,6 +39,7 @@
             clusterctl
             cmctl
             ctlptl
+            jq
             k9s
             kdash
             kind
@@ -60,6 +61,7 @@
             popeye
             stern
             tilt
+            yq-go
           ] ++ lib.optionals (lib.strings.hasPrefix "x86_64" pkgs.stdenv.hostPlatform.system) (with pkgs; [
             click
           ]);
