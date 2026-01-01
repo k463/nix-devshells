@@ -15,7 +15,9 @@
           # packages needed for building the software in this repo
           nativeBuildInputs = with pkgs; [];
           # packages needed at runtime for running software in this repo
-          packages = with pkgs; [];
+          packages = with pkgs; [
+            self'.packages.default
+          ];
         };
         devShells.godev = pkgs.mkShell {
           # packages needed for building the software in this repo
@@ -24,7 +26,7 @@
           ];
           # packages needed at runtime for running software in this repo
           packages = with pkgs; [
-            gopls
+            self'.packages.godev
           ];
         };
         devShells.k8s = pkgs.mkShell {
@@ -34,6 +36,41 @@
           ];
           # packages needed at runtime for running software in this repo
           packages = with pkgs; [
+            self'.packages.k8s
+          ];
+        };
+        devShells.temporaldev = pkgs.mkShell {
+          # packages needed for building the software in this repo
+          nativeBuildInputs = with pkgs; [
+            go
+          ];
+          # packages needed at runtime for running software in this repo
+          packages = with pkgs; [
+            self'.packages.temporaldev
+          ];
+        };
+
+        packages.default = pkgs.buildEnv {
+          name = "nix-devshells";
+          paths = with pkgs; [];
+        };
+        packages.godev = pkgs.buildEnv {
+          name = "nix-devshells";
+          paths = with pkgs; [
+            # https://mgdm.net/weblog/vscode-nix-go-tools/
+            go
+            gotools
+            gopls
+            go-outline
+            gopkgs
+            gocode-gomod
+            godef
+            golint
+          ];
+        };
+        packages.k8s = pkgs.buildEnv {
+          name = "nix-devshells";
+          paths = with pkgs; [
             # kubernetes tools
             cilium-cli
             clusterctl
@@ -45,6 +82,7 @@
             kind
             kube-capacity
             kube-linter
+            kubebuilder
             kubeconform
             kubectl
             kubectl-gadget
@@ -66,14 +104,10 @@
             click
           ]);
         };
-        devShells.temporaldev = pkgs.mkShell {
-          # packages needed for building the software in this repo
-          nativeBuildInputs = with pkgs; [
-            go
-          ];
-          # packages needed at runtime for running software in this repo
-          packages = with pkgs; [
-            gopls
+        packages.temporaldev = pkgs.buildEnv {
+          name = "nix-devshells";
+          paths = with pkgs; [
+            self'.packages.godev
             temporal-cli
           ];
         };
