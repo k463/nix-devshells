@@ -23,6 +23,9 @@ Using:
 - `default`: empty
 - `godev`: [Go](https://go.dev/) language dev; includes Go itself, language
   server (`gopls`), and other tools like linter, etc.
+- `infra`: tools for managing local and cloud infrastructure, AWS CLI, OpenTOFU,
+  Terraform, etc.; NOTE that Terraform is unfree, so to use this shell you'll
+  need to run `NIXPKGS_ALLOW_UNFREE=1 nix develop ...#infra --impure` or similar
 - `k8s`: [Kubernetes](https://kubernetes.io/) tools for cluster administration
   and app/service manifest development
 - `temporaldev`: [Temporal](https://temporal.io/) + Go development

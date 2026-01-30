@@ -29,6 +29,14 @@
             self'.packages.godev
           ];
         };
+        devShells.infra = pkgs.mkShell {
+          # packages needed for building the software in this repo
+          nativeBuildInputs = with pkgs; [];
+          # packages needed at runtime for running software in this repo
+          packages = with pkgs; [
+            self'.packages.infra
+          ];
+        };
         devShells.k8s = pkgs.mkShell {
           # packages needed for building the software in this repo
           nativeBuildInputs = with pkgs; [
@@ -66,6 +74,24 @@
             gocode-gomod
             godef
             golint
+          ];
+        };
+        packages.infra = pkgs.buildEnv {
+          name = "nix-devshells-infra";
+          paths = with pkgs; [
+            awscli2
+            awsls
+            checkov
+            curl
+            opentofu
+            python3
+            terraform
+            terraform-docs
+            terraform-ls
+            terraformer
+            tflint
+            tofu-ls
+            wget
           ];
         };
         packages.k8s = pkgs.buildEnv {
