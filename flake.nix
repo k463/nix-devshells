@@ -79,6 +79,7 @@
         packages.infra = pkgs.buildEnv {
           name = "nix-devshells-infra";
           paths = with pkgs; [
+            aws-sso-cli
             awscli2
             awsls
             checkov
